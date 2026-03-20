@@ -51,34 +51,34 @@ body {
     position: fixed;
     bottom: 0;
     left: 0; right: 0;
-    height: 220px;
+    height: 380px;
     z-index: 2;
     pointer-events: none;
 }
 /* .tree = invisible wrapper (height = trunk), ::before = crown, ::after = trunk */
 .tree {
     position: absolute; bottom: 0;
-    width: 0; height: 30px;
+    width: 0; height: 60px;
 }
 .tree::before { /* crown */
-    content: ''; position: absolute; bottom: 30px;
+    content: ''; position: absolute; bottom: 60px;
     background: linear-gradient(170deg, #0f4812 0%, #0a2f0a 100%);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 .tree::after { /* trunk */
-    content: ''; position: absolute; bottom: 0; left: -5px;
-    width: 10px; height: 30px; background: #3d1a00;
-    border-radius: 2px 2px 0 0;
+    content: ''; position: absolute; bottom: 0; left: -10px;
+    width: 20px; height: 60px; background: #3d1a00;
+    border-radius: 4px 4px 0 0;
 }
 /* Positions (asymmetric L/R) and crown sizes */
-.t3 { left:  0%;  } .t3::before { left:-35px; right:-35px; height:150px; }
-.t7 { left: 10%;  } .t7::before { left:-32px; right:-32px; height:140px; }
-.t4 { left: 20%;  } .t4::before { left:-20px; right:-20px; height: 90px; }
-.t6 { left: 30%;  } .t6::before { left:-22px; right:-22px; height:105px; }
-.t2 { right: 29%; } .t2::before { left:-24px; right:-24px; height:100px; }
-.t1 { right: 20%; } .t1::before { left:-30px; right:-30px; height:120px; }
-.t5 { right: 10%; } .t5::before { left:-28px; right:-28px; height:130px; }
-.t8 { right:  0%; } .t8::before { left:-18px; right:-18px; height: 80px; }
+.t3 { left:  0%;  } .t3::before { left:-70px; right:-70px; height:300px; }
+.t7 { left: 10%;  } .t7::before { left:-64px; right:-64px; height:280px; }
+.t4 { left: 20%;  } .t4::before { left:-40px; right:-40px; height:180px; }
+.t6 { left: 30%;  } .t6::before { left:-44px; right:-44px; height:210px; }
+.t2 { right: 29%; } .t2::before { left:-48px; right:-48px; height:200px; }
+.t1 { right: 20%; } .t1::before { left:-60px; right:-60px; height:240px; }
+.t5 { right: 10%; } .t5::before { left:-56px; right:-56px; height:260px; }
+.t8 { right:  0%; } .t8::before { left:-36px; right:-36px; height:160px; }
 
 .ground {
     position: fixed;
@@ -186,7 +186,7 @@ body {
 ════════════════════════════════════════ */
 
 .campfire-wrap {
-    position: fixed; bottom: 46px;
+    position: fixed; bottom: 0;
     left: 50%; transform: translateX(-50%);
     z-index: 3; pointer-events: none;
 }
