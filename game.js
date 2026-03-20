@@ -26,14 +26,38 @@ function shuffle(arr) {
     return a;
 }
 
+const STORAGE_KEY = 'skaut-cast2';
+
+function saveState() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ slots, cardOrder, photoOrder, textOrder }));
+}
+
+function loadState() {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return false;
+        const s = JSON.parse(raw);
+        if (!s.slots || !s.cardOrder || !s.photoOrder || !s.textOrder) return false;
+        slots = s.slots;
+        cardOrder = s.cardOrder;
+        photoOrder = s.photoOrder;
+        textOrder = s.textOrder;
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+
 function init() {
-    slots = {};
-    DATA.forEach(p => { slots[p.id] = { photo: null, text: null }; });
     selectedPhoto = null;
     selectedText  = null;
-    cardOrder = shuffle(DATA.map(p => p.id));
-    photoOrder = shuffle(DATA.map(p => p.id));
-    textOrder  = shuffle(DATA.map(p => p.id));
+    if (!loadState()) {
+        slots = {};
+        DATA.forEach(p => { slots[p.id] = { photo: null, text: null }; });
+        cardOrder  = shuffle(DATA.map(p => p.id));
+        photoOrder = shuffle(DATA.map(p => p.id));
+        textOrder  = shuffle(DATA.map(p => p.id));
+    }
     render();
     document.getElementById('result').className = 'result';
     document.getElementById('btn-print').disabled = true;
@@ -44,6 +68,7 @@ function render() {
     renderTextPool();
     renderCards();
     updateCheckBtn();
+    saveState();
 }
 
 function renderPhotoPool() {
@@ -332,7 +357,10 @@ document.getElementById('btn-check').addEventListener('click', () => {
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
 
-document.getElementById('btn-reset').addEventListener('click', init);
+document.getElementById('btn-reset').addEventListener('click', () => {
+    localStorage.removeItem(STORAGE_KEY);
+    init();
+});
 
 document.getElementById('btn-print').addEventListener('click', () => {
     const grid = document.getElementById('print-grid');

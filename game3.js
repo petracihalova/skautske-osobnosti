@@ -32,6 +32,22 @@ let textScore     = 0;  // počet správně zodpovězených textů
 let currentPhotoCorrect = false;
 let answered      = false;
 
+const STORAGE_KEY = 'skaut-cast1';
+
+function saveGameState(nextQ) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        questionOrder,
+        currentQ: nextQ,
+        photoScore,
+        textScore,
+        results: [..._questionResults],
+    }));
+}
+
+function clearGameState() {
+    localStorage.removeItem(STORAGE_KEY);
+}
+
 // ── SHUFFLE ──────────────────────────────────────────────────────
 
 function shuffle(arr) {
@@ -53,6 +69,24 @@ function showScreen(id) {
 // ── INIT ─────────────────────────────────────────────────────────
 
 function init() {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+            const s = JSON.parse(raw);
+            if (s.questionOrder && s.currentQ > 0) {
+                questionOrder = s.questionOrder;
+                currentQ      = s.currentQ;
+                photoScore    = s.photoScore;
+                textScore     = s.textScore;
+                s.results.forEach((v, i) => { _questionResults[i] = v; });
+                answered = false;
+                showScreen('screen-quiz');
+                renderStars();
+                showPhotoPhase(currentQ);
+                return;
+            }
+        }
+    } catch (e) {}
     questionOrder = shuffle(DATA.map(p => p.id));
     currentQ      = 0;
     photoScore    = 0;
@@ -230,8 +264,10 @@ function handleTextAnswer(selectedId, correctId) {
         document.getElementById('phase-text').classList.add('hidden');
 
         if (currentQ + 1 >= DATA.length) {
+            clearGameState();
             showResult();
         } else {
+            saveGameState(currentQ + 1);
             showPhotoPhase(currentQ + 1);
             document.getElementById('quiz-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -422,6 +458,7 @@ function scheduleBird() {
 document.getElementById('btn-start').addEventListener('click', startGame);
 document.getElementById('btn-play-again').addEventListener('click', () => {
     _questionResults.fill(null);
+    clearGameState();
     init();
 });
 
