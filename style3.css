@@ -346,6 +346,21 @@ body {
     width: 100%;
     max-width: 480px;
 }
+.btn-restart {
+    margin-top: 4px;
+    padding: 6px 16px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(200,160,60,0.4);
+    border-radius: 20px;
+    color: #c8a840;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+.btn-restart:hover {
+    background: rgba(200,160,60,0.15);
+    border-color: #c8a840;
+}
 .stars-row {
     display: flex;
     gap: 6px;

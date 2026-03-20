@@ -462,6 +462,12 @@ document.getElementById('btn-play-again').addEventListener('click', () => {
     init();
 });
 
+document.getElementById('btn-restart').addEventListener('click', () => {
+    _questionResults.fill(null);
+    clearGameState();
+    init();
+});
+
 createFireflies();
 scheduleSquirrel();
 scheduleBird();

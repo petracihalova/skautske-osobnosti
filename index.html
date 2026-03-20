@@ -63,9 +63,18 @@
         }
         .tree::after {
             content: ''; position: absolute;
-            bottom: -30px; left: 50%; transform: translateX(-50%);
+            left: 50%; transform: translateX(-50%);
             width: 10px; height: 30px; background: #3d1a00;
         }
+        /* top = border-bottom-width - trunk-height (puts trunk flush at tree base) */
+        .t1::after { top: 90px; }
+        .t2::after { top: 70px; }
+        .t3::after { top: 120px; }
+        .t4::after { top: 60px; }
+        .t5::after { top: 100px; }
+        .t6::after { top: 75px; }
+        .t7::after { top: 110px; }
+        .t8::after { top: 50px; }
         .t1 { left:2%;   border-left-width:30px; border-right-width:30px; border-bottom-width:120px; }
         .t1::before { top:-85px;  border-left-width:22px; border-right-width:22px; border-bottom-width:90px; }
         .t2 { left:7%;   border-left-width:24px; border-right-width:24px; border-bottom-width:100px; }
@@ -100,15 +109,19 @@
             animation: fireflyFloat linear infinite;
         }
         @keyframes fireflyFloat {
-            0%   { transform: translate(0,0);        opacity: 0;   }
+            0%   { transform: translate(0,0);                            opacity: 0;   }
             20%  { opacity: 1; }
-            50%  { transform: translate(40px,-30px); opacity: 0.9; }
+            50%  { transform: translate(var(--fx1,40px), var(--fy1,-30px)); opacity: 0.9; }
             80%  { opacity: 0.6; }
-            100% { transform: translate(-20px,20px); opacity: 0;   }
+            100% { transform: translate(var(--fx2,-20px),var(--fy2,20px)); opacity: 0;   }
         }
 
         /* ── CAMPFIRE ── */
-        .campfire-wrap { position: relative; margin-bottom: 20px; z-index: 5; }
+        .campfire-wrap {
+            position: fixed; bottom: 46px;
+            left: 50%; transform: translateX(-50%);
+            z-index: 3;
+        }
         .campfire {
             position: relative; width: 80px;
             margin: 0 auto;
@@ -246,20 +259,20 @@
 <div class="ground"></div>
 <div class="fireflies" id="fireflies"></div>
 
-<div class="content">
-
-    <div class="campfire-wrap">
-        <div class="campfire">
-            <div class="flame f1"></div>
-            <div class="flame f2"></div>
-            <div class="flame f3"></div>
-            <div class="ember e1"></div>
-            <div class="ember e2"></div>
-            <div class="ember e3"></div>
-            <div class="logs"></div>
-        </div>
-        <div class="glow"></div>
+<div class="campfire-wrap">
+    <div class="campfire">
+        <div class="flame f1"></div>
+        <div class="flame f2"></div>
+        <div class="flame f3"></div>
+        <div class="ember e1"></div>
+        <div class="ember e2"></div>
+        <div class="ember e3"></div>
+        <div class="logs"></div>
     </div>
+    <div class="glow"></div>
+</div>
+
+<div class="content">
 
     <div class="title-area">
         <div class="title-lily">⚜️</div>
@@ -295,6 +308,11 @@
         ff.style.top               = (Math.random() * 60 + 5) + 'vh';
         ff.style.animationDuration = (3 + Math.random() * 5)  + 's';
         ff.style.animationDelay    = (Math.random() * 6)       + 's';
+        const r = () => (Math.random() * 80 - 40).toFixed(0) + 'px';
+        ff.style.setProperty('--fx1', r());
+        ff.style.setProperty('--fy1', r());
+        ff.style.setProperty('--fx2', r());
+        ff.style.setProperty('--fy2', r());
         container.appendChild(ff);
     }
 </script>
