@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skautské osobnosti</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+
+<a class="btn-home" href="index.html">← Zpět</a>
+
+<!-- Atmosféra -->
+<div class="sky"></div>
+<div class="trees">
+    <div class="tree t1"></div><div class="tree t2"></div><div class="tree t3"></div>
+    <div class="tree t4"></div><div class="tree t5"></div><div class="tree t6"></div>
+    <div class="tree t7"></div><div class="tree t8"></div>
+</div>
+<div class="ground"></div>
+<div class="fireflies" id="fireflies"></div>
+<div class="squirrel" id="squirrel">🐿️</div>
+<div class="squirrel-bubble" id="squirrel-bubble"></div>
+<div class="bird" id="bird">🦉</div>
+
+<header>
+    <div class="lily">⚜️</div>
+    <h1>Skautské osobnosti</h1>
+    <p>Klepni na fotku nebo popis, pak na prázdné místo pod jménem.</p>
+</header>
+
+<!-- Fotky -->
+<div class="pool-section">
+    <div class="photo-pool" id="photo-pool"></div>
+</div>
+
+<!-- Texty -->
+<div class="pool-section">
+    <div class="text-pool" id="text-pool"></div>
+</div>
+
+<!-- Karty se jmény -->
+<div class="cards-section">
+    <h2>Přiřaď ke každému jménu fotografii a popis ↓</h2>
+    <div class="cards-grid" id="cards-grid"></div>
+</div>
+
+<div class="result" id="result"></div>
+
+<div class="actions">
+    <button class="btn btn-check" id="btn-check" disabled>Zkontrolovat</button>
+    <button class="btn btn-reset" id="btn-reset">Začít znovu</button>
+    <button class="btn btn-print" id="btn-print" disabled>🖨️ Vytisknout</button>
+</div>
+
+<!-- Tiskový pohled -->
+<div id="print-view">
+    <div class="print-header">
+        <span>⚜️</span>
+        <h1>Skautské osobnosti</h1>
+    </div>
+    <div class="print-grid" id="print-grid"></div>
+</div>
+
+<script src="game.js"></script>
+
+</body>
+</html>

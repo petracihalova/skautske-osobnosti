@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skautský kvíz 🏕️</title>
+    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+
+<a class="btn-home" href="index.html">← Zpět</a>
+
+<!-- Atmosféra – vždy v pozadí -->
+<div class="sky" id="sky"></div>
+<div class="trees">
+    <div class="tree t1"></div><div class="tree t2"></div><div class="tree t3"></div>
+    <div class="tree t4"></div><div class="tree t5"></div><div class="tree t6"></div>
+    <div class="tree t7"></div><div class="tree t8"></div>
+</div>
+<div class="ground"></div>
+<div class="fireflies" id="fireflies"></div>
+<div class="squirrel" id="squirrel">🐿️</div>
+<div class="squirrel-bubble" id="squirrel-bubble"></div>
+<div class="bird" id="bird">🦉</div>
+
+<!-- ÚVOD -->
+<div id="screen-intro" class="screen">
+    <div class="campfire-wrap">
+        <div class="campfire">
+            <div class="flame f1"></div>
+            <div class="flame f2"></div>
+            <div class="flame f3"></div>
+            <div class="ember e1"></div>
+            <div class="ember e2"></div>
+            <div class="ember e3"></div>
+            <div class="logs"></div>
+        </div>
+        <div class="glow"></div>
+    </div>
+    <div class="intro-card">
+        <div class="intro-badge">⚜️</div>
+        <h1>Skautský kvíz</h1>
+        <p>Poznáš slavné skauty a skautky?<br>Sbírej hvězdy a dokaž, že jsi pravý skaut!</p>
+        <button class="btn-start" id="btn-start">🏕️ Hrát!</button>
+    </div>
+</div>
+
+<!-- KVÍZ -->
+<div id="screen-quiz" class="screen hidden">
+    <div class="quiz-header">
+        <div class="stars-row" id="stars-row"></div>
+        <div class="question-counter" id="question-counter"></div>
+    </div>
+    <div class="quiz-card" id="quiz-card">
+        <div class="quiz-phase-label" id="quiz-phase-label"></div>
+        <div class="quiz-name" id="quiz-name"></div>
+
+        <!-- Fáze 1: výběr fotky -->
+        <div id="phase-photo">
+            <p class="quiz-prompt">📷 Vyber správnou fotografii:</p>
+            <div class="photo-options-grid" id="photo-options-grid"></div>
+        </div>
+
+        <!-- Fáze 2: výběr textu -->
+        <div id="phase-text" class="hidden">
+            <p class="quiz-prompt">📝 Vyber správný popis:</p>
+            <div class="options-grid" id="options-grid"></div>
+        </div>
+    </div>
+</div>
+
+<!-- VÝSLEDEK -->
+<div id="screen-result" class="screen hidden">
+    <div class="result-card">
+        <div class="result-campfire" id="result-campfire"></div>
+        <h2 id="result-title"></h2>
+        <div class="result-stars" id="result-stars"></div>
+        <p id="result-msg"></p>
+        <div class="result-actions">
+            <button class="btn-play-again" id="btn-play-again">🔄 Hrát znovu</button>
+            <button class="btn-print-result" id="btn-print-result">🖨️ Vytisknout</button>
+        </div>
+    </div>
+</div>
+
+<!-- Tiskový pohled -->
+<div id="print-view">
+    <div class="print-header">
+        <span>⚜️</span>
+        <h1>Skautské osobnosti</h1>
+    </div>
+    <div class="print-grid" id="print-grid"></div>
+</div>
+
+<script src="game3.js"></script>
+</body>
+</html>
