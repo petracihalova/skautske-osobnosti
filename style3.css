@@ -80,6 +80,18 @@ body {
 .t5 { right: 10%; } .t5::before { left:-56px; right:-56px; height:260px; }
 .t8 { right:  0%; } .t8::before { left:-36px; right:-36px; height:160px; }
 
+@media (max-width: 600px) {
+    .trees { height: 220px; }
+    .tree  { height: 30px; }
+    .tree::before { bottom: 30px; }
+    .tree::after  { left: -5px; width: 10px; height: 30px; border-radius: 2px 2px 0 0; }
+    .t7, .t6, .t1, .t2 { display: none; }
+    .t3::before { left:-35px; right:-35px; height:150px; }
+    .t4::before { left:-20px; right:-20px; height: 90px; }
+    .t5::before { left:-28px; right:-28px; height:130px; }
+    .t8::before { left:-18px; right:-18px; height: 80px; }
+}
+
 .ground {
     position: fixed;
     bottom: 0; left: 0; right: 0;
