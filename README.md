@@ -11,7 +11,9 @@ Hra má dvě části:
 
 ## Spuštění
 
-Stačí otevřít `index.html` v prohlížeči — hra nevyžaduje žádný server ani instalaci.
+Hra běží na GitHub Pages: **https://petracihalova.github.io/skautske-osobnosti/**
+
+Nebo lokálně — stačí otevřít `index.html` v prohlížeči, hra nevyžaduje žádný server ani instalaci.
 
 ## Licence
 
