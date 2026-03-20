@@ -431,7 +431,10 @@ function runSquirrel() {
     const bubble = document.getElementById('squirrel-bubble');
     const ltr    = Math.random() > 0.5;
     const phrase = SCOUT_PHRASES[Math.floor(Math.random() * SCOUT_PHRASES.length)];
-    const stopX  = window.innerWidth * (0.35 + Math.random() * 0.3);
+    // Stop on the side the squirrel comes from, avoiding the center campfire
+    const stopX  = ltr
+        ? window.innerWidth * (0.1 + Math.random() * 0.2)   // left side: 10–30%
+        : window.innerWidth * (0.7 + Math.random() * 0.2);  // right side: 70–90%
 
     sq.style.transition = 'none';
     sq.style.opacity    = '1';

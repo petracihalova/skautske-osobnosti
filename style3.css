@@ -55,56 +55,30 @@ body {
     z-index: 2;
     pointer-events: none;
 }
+/* .tree = invisible wrapper (height = trunk), ::before = crown, ::after = trunk */
 .tree {
-    position: absolute;
-    bottom: 0;
-    width: 0; height: 0;
-    border-left: solid transparent;
-    border-right: solid transparent;
-    border-bottom: solid #0d3a0d;
+    position: absolute; bottom: 0;
+    width: 0; height: 30px;
 }
-.tree::before {
-    content: '';
-    position: absolute;
-    width: 0; height: 0;
-    border-left: solid transparent;
-    border-right: solid transparent;
-    border-bottom: solid #0f4510;
+.tree::before { /* crown */
+    content: ''; position: absolute; bottom: 30px;
+    background: linear-gradient(170deg, #0f4812 0%, #0a2f0a 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
-.tree::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 10px; height: 30px;
-    background: #3d1a00;
+.tree::after { /* trunk */
+    content: ''; position: absolute; bottom: 0; left: -5px;
+    width: 10px; height: 30px; background: #3d1a00;
+    border-radius: 2px 2px 0 0;
 }
-/* Different tree sizes */
-.t1 { left:11%;  border-left-width:30px; border-right-width:30px; border-bottom-width:120px; }
-.t1::before { top:-85px; border-left-width:22px; border-right-width:22px; border-bottom-width:90px; }
-.t2 { right:21%; border-left-width:24px; border-right-width:24px; border-bottom-width:100px; }
-.t2::before { top:-70px; border-left-width:18px; border-right-width:18px; border-bottom-width:75px; }
-.t3 { left:1%;   border-left-width:35px; border-right-width:35px; border-bottom-width:150px; }
-.t3::before { top:-110px; border-left-width:26px; border-right-width:26px; border-bottom-width:115px; }
-.t4 { left:21%;  border-left-width:20px; border-right-width:20px; border-bottom-width:90px; }
-.t4::before { top:-64px; border-left-width:16px; border-right-width:16px; border-bottom-width:70px; }
-.t5 { right:31%; border-left-width:28px; border-right-width:28px; border-bottom-width:130px; }
-.t5::before { top:-95px; border-left-width:21px; border-right-width:21px; border-bottom-width:100px; }
-.t6 { left:31%;  border-left-width:22px; border-right-width:22px; border-bottom-width:105px; }
-.t6::before { top:-75px; border-left-width:17px; border-right-width:17px; border-bottom-width:80px; }
-.t7 { right:11%; border-left-width:32px; border-right-width:32px; border-bottom-width:140px; }
-.t7::before { top:-100px; border-left-width:24px; border-right-width:24px; border-bottom-width:105px; }
-.t8 { right:1%;  border-left-width:18px; border-right-width:18px; border-bottom-width:80px; }
-.t8::before { top:-56px; border-left-width:14px; border-right-width:14px; border-bottom-width:60px; }
-/* Trunk positions: top = border-bottom-width - 30 */
-.t1::after { top: 90px; }
-.t2::after { top: 70px; }
-.t3::after { top: 120px; }
-.t4::after { top: 60px; }
-.t5::after { top: 100px; }
-.t6::after { top: 75px; }
-.t7::after { top: 110px; }
-.t8::after { top: 50px; }
+/* Positions (asymmetric L/R) and crown sizes */
+.t3 { left:  0%;  } .t3::before { left:-35px; right:-35px; height:150px; }
+.t7 { left: 10%;  } .t7::before { left:-32px; right:-32px; height:140px; }
+.t4 { left: 20%;  } .t4::before { left:-20px; right:-20px; height: 90px; }
+.t6 { left: 30%;  } .t6::before { left:-22px; right:-22px; height:105px; }
+.t2 { right: 29%; } .t2::before { left:-24px; right:-24px; height:100px; }
+.t1 { right: 20%; } .t1::before { left:-30px; right:-30px; height:120px; }
+.t5 { right: 10%; } .t5::before { left:-28px; right:-28px; height:130px; }
+.t8 { right:  0%; } .t8::before { left:-18px; right:-18px; height: 80px; }
 
 .ground {
     position: fixed;
